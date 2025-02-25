@@ -1,0 +1,12 @@
+/* -----------------------ITINERARY-----------------------------*/
+.itinerary-accordion-header::before {
+  content: "";
+  position: absolute;
+  left: -1.875rem;
+  top: 0;
+  background-image: url("/paper-plane-small.svg");
+  width: 1.313rem;
+  height: 1.125rem;
+  background-size: 1.313rem;
+  background-color: #fff;
+}

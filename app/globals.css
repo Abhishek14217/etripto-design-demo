@@ -1,21 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "../node_modules/slick-carousel/slick/slick.css";
+/* @import "../node_modules/slick-carousel/slick/slick-theme.css"; */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --bg-light-gray: #f5f7fa; */
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  body {
+    /* background-color: var(--bg-light-gray); */
+    font-family: "Plus Jakarta Sans", serif;
+  }
+
+  html {
+    font-size: 16px;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 901px) and (max-width: 1300px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1301px) and (max-width: 1500px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1901px) and (max-width: 2100px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2101px) and (max-width: 2500px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 2501px) and (max-width: 3000px) {
+  html {
+    font-size: 28px;
+  }
+}
+
+/* -------------------SLICK SLIDER COMMON--------------------- */
+.slick-prev,
+.slick-next {
+  position: absolute;
+  font-size: 0;
+  z-index: 1;
+  cursor: pointer;
+  outline: none;
+  background-repeat: no-repeat;
+}
+
+.slick-next {
+  transform: rotate(180deg);
+}
+
+/* -------------------RADIO BUTTONS--------------------- */
+input[type="radio"] {
+  accent-color: rgba(18, 41, 134, 1);
+}
+
+.radio-label {
+  text-align: center;
+  position: relative;
+  padding: 0.688rem;
+  cursor: pointer;
+  z-index: 1;
+  color: black;
+  max-width: 90%;
+}
+
+.radio-input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-span {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 2.5rem;
+  width: 100%;
+  border: 1px solid rgba(110, 118, 153, 1);
+  border-radius: 0.3rem;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  transition: background 0.3s;
+}
+
+.radio-input:checked ~ .radio-span {
+  background: rgba(2, 237, 214, 1);
+  border-color: rgba(2, 237, 214, 1);
+}
+
+.radio-label:has(.radio-input:checked) {
+  color: #122986;
+}
+
+/* -------------------ALL MODAL COMMON--------------------- */
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  background-color: white;
+  position: fixed;
+  animation: slide-up-fade-in 0.3s ease-out forwards;
+  z-index: 1000;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@keyframes slide-up-fade-in {
+  0% {
+    transform: translateY(1.875rem);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
+/* -------------------HIDING SCROLLBAR--------------------- */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* -------------------SECTION HEADER COMMON--------------------- */
+@media (min-width: 1024px) {
+  /* lg breakpoint */
+  .justifyBetween {
+    justify-content: space-between;
+  }
+
+  .justifyCenter {
+    justify-content: center;
+  }
+}
+
+/* -------------------OFF CANVAS COMMON--------------------- */
+.off-canvas {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 26.875rem;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s linear;
+  max-width: 75%;
+  overflow: scroll;
+}
+
+/* -----------------------GROUPED PACKAGES COMMON-----------------------------*/
+.domestic-slider {
+  .slick-prev,
+  .slick-next {
+    top: 50%;
+    background-image: url("/domestic-arrow.svg");
+    width: 1rem;
+    height: 2rem;
+  }
+
+  .slick-prev {
+    left: -1.7rem;
+  }
+
+  .slick-next {
+    right: -0.5rem;
+  }
+}
+
+/* -------------------MQ FOR MOBILE CASE--------------------- */
+
+@media (min-width: 280px) and (max-width: 1024px) {
+  /* -------------------RADIO BUTTONS--------------------- */
+  .radio-label {
+    padding: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .radio-input {
+    display: none;
+  }
+
+  .radio-span {
+    padding: 0.3rem 1rem;
+    white-space: nowrap;
+    position: unset;
+    height: 100%;
+  }
 }

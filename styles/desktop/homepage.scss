@@ -1,0 +1,112 @@
+/* -----------------------MAIN SLIDER-----------------------------*/
+.main-slider {
+  .slick-prev,
+  .slick-next {
+    top: 40%;
+    background-image: url("/arrow.svg");
+    width: 1.5rem;
+    height: 2.5rem;
+  }
+
+  .slick-prev {
+    left: 3rem;
+  }
+
+  .slick-next {
+    right: 3rem;
+  }
+
+  ul.slick-dots {
+    display: flex !important;
+    position: absolute;
+    bottom: 3rem;
+    justify-content: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    column-gap: 0.6rem;
+    z-index: 9;
+    list-style: none;
+
+    li {
+      border: 2px solid #fff;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+
+      button {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0;
+        display: block;
+      }
+    }
+
+    li.slick-active {
+      border-color: #02edd6;
+      position: relative;
+    }
+
+    li.slick-active::after {
+      content: "";
+      position: absolute;
+      background-color: #02edd6;
+      width: 0.25rem;
+      height: 0.25rem;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      margin: auto;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
+
+/* -----------------------DEST BY THEME-----------------------------*/
+.dest-by-theme-slider {
+  .slick-prev,
+  .slick-next {
+    top: 35%;
+    background-image: url("/domestic-arrow.svg");
+    width: 1rem;
+    height: 2rem;
+  }
+
+  .slick-prev {
+    left: -2rem;
+  }
+
+  .slick-next {
+    right: -1rem;
+  }
+}
+
+/* -----------------------STATE WISE PACKAGES-----------------------------*/
+.state-packages-slider {
+  .slick-prev,
+  .slick-next {
+    top: 10%;
+    background-image: url("/domestic-arrow.svg");
+    width: 1rem;
+    height: 2rem;
+  }
+
+  .slick-prev {
+    left: -2rem;
+  }
+
+  .slick-next {
+    right: -2rem;
+  }
+}
+
+//-----------------------MQ FOR MOBILE CASE---------------------------------
+@media (min-width: 280px) and (max-width: 1024px) {
+  /* -----------------------MAIN SLIDER-----------------------------*/
+  ul.slick-dots {
+    bottom: 1rem !important;
+  }
+}

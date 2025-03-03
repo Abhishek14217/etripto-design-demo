@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import NeedToKnow from "./NeedToKnow";
+import NeedToKnow from "./need-to-know/NeedToKnow";
 import Itinerary from "./Itinerary";
 import TourDetailsAndInfo from "./TourDetailsAndInfo";
 
@@ -10,8 +10,8 @@ const btnsData = [
   { title: "Tour Details" },
   { title: "Tour Information" },
   { title: "Need To Know" },
-  { title: "Upgrades" },
   { title: "Policy & Terms" },
+  { title: "Upgrades" },
 ];
 
 const tourDetailsData = [

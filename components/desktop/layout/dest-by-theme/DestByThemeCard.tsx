@@ -16,13 +16,17 @@ const DestByThemeCard: React.FC<DestByThemeCardProps> = ({
 }) => {
   return (
     //Outer div is to protect Link tag from default classes of slick slider
-    <div className="min-w-[8rem] lg:min-w-[unset]">
+    <div className="min-w-[8rem] md:min-w-[10rem] lg:min-w-[unset]">
       <Link href={redirect} className="text-center lg:block lg:pr-gap">
         <div className="lg:overflow-hidden mb-gapSmall lg:mb-gap">
           <Image src={image} alt={`${theme} image`} className="size-full" />
         </div>
-        <h5 className="text-fontDesk lg:text-fontDeskLarge font-bold">{theme}</h5>
-        <h6 className="text-fontDeskSmall lg:text-fontDesk">{destCount} destinations</h6>
+        <h5 className="text-fontDesk lg:text-fontDeskLarge font-bold">
+          {theme}
+        </h5>
+        <h6 className="text-fontDeskSmall lg:text-fontDesk">
+          {destCount} destinations
+        </h6>
       </Link>
     </div>
   );

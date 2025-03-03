@@ -209,9 +209,30 @@ input[type="radio"] {
   }
 }
 
-/* -------------------MQ FOR MOBILE CASE--------------------- */
+/* -------------------MQ FOR TABLET(LANDSCAPE) CASE--------------------- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* -------------------RADIO BUTTONS--------------------- */
+  .radio-label {
+    padding: 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-@media (min-width: 280px) and (max-width: 1024px) {
+  .radio-input {
+    display: none;
+  }
+
+  .radio-span {
+    padding: 0.3rem 1.5rem;
+    white-space: nowrap;
+    position: unset;
+    height: 100%;
+  }
+}
+
+/* -------------------MQ FOR MOBILE CASE--------------------- */
+@media (min-width: 280px) and (max-width: 768px) {
   /* -------------------RADIO BUTTONS--------------------- */
   .radio-label {
     padding: 0rem;

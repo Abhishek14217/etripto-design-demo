@@ -10,7 +10,6 @@ type SectionHeaderCommonProps = {
   middleText?: string;
   containerClass?: string;
   middleTextFontSizeClass?: string;
-  isMob?: boolean;
   hasBtn?: boolean;
   redirectLink?: string;
   img?: StaticImageData;
@@ -24,7 +23,6 @@ const SectionHeaderCommon: React.FC<SectionHeaderCommonProps> = ({
   middleText,
   containerClass,
   middleTextFontSizeClass,
-  isMob,
   hasBtn,
   redirectLink,
   img,
@@ -37,7 +35,9 @@ const SectionHeaderCommon: React.FC<SectionHeaderCommonProps> = ({
         hasBtn ? "justifyBetween" : "justifyCenter"
       }`}
     >
-      {!isMob && hasBtn && <div className="invisible">aaaaaaaaaaaaaa</div>}
+      {hasBtn && (
+        <div className="invisible lg:block hidden">aaaaaaaaaaaaaa</div>
+      )}
       <div
         className={`${
           containerClass ? containerClass : ""
@@ -79,7 +79,11 @@ const SectionHeaderCommon: React.FC<SectionHeaderCommonProps> = ({
           {subText}
         </h6>
       </div>
-      {!isMob && hasBtn && <Button redirect={redirectLink ?? "#"} />}
+      {hasBtn && (
+        <div className="lg:inline-block hidden">
+          <Button redirect={redirectLink ?? "#"} />
+        </div>
+      )}
     </div>
   );
 };

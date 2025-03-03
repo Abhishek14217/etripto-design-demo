@@ -35,11 +35,7 @@ const stateData = [
   { state: "Kerala", slug: "kerala" },
 ];
 
-type StateWisePackagesProps = {
-  isMob?: boolean;
-};
-
-const StateWisePackages: React.FC<StateWisePackagesProps> = ({ isMob }) => {
+const StateWisePackages = () => {
   const [selectedState, setSelectedState] = useState("Himachal Pradesh");
 
   var settings = {
@@ -57,13 +53,13 @@ const StateWisePackages: React.FC<StateWisePackagesProps> = ({ isMob }) => {
     setSelectedState(event.target.value);
   };
 
-  const renderStateOptions = () => {
+  const renderStateOptions = (name: string) => {
     return stateData.map((item, index) => (
       <label key={index} htmlFor={item.slug} className="radio-label">
         <Input
           inputType="radio"
           id={item.slug}
-          name="states"
+          name={name}
           value={item.state}
           checked={selectedState === item.state}
           onChange={handleChange}
@@ -76,44 +72,51 @@ const StateWisePackages: React.FC<StateWisePackagesProps> = ({ isMob }) => {
 
   return (
     <div className="mt-gapLargest lg:mt-sectionGap relative">
-      {!isMob && (
-        <Image
-          width={100}
-          src={coconut}
-          alt="coconut"
-          className="absolute left-[1rem] bottom-[0rem]"
-        />
-      )}
+      <Image
+        width={100}
+        src={coconut}
+        alt="coconut"
+        className="absolute left-[1rem] bottom-[0rem] hidden lg:block"
+      />
+
       <Wrapper>
         <SectionHeaderCommon
           mainText="Package picks from State Wise"
           subText="Our most visited sights are here for you to explore!"
-          isMob={isMob}
           hasBtn
           redirectLink="#"
         />
         <div className="mt-gapMed lg:mt-gap state-packages-slider">
-          {isMob ? (
-            <div className="flex gap-gap overflow-x-scroll no-scrollbar">
-              {renderStateOptions()}
-            </div>
-          ) : (
-            <Slider {...settings}>{renderStateOptions()}</Slider>
-          )}
+          <div className="flex gap-gap overflow-x-scroll no-scrollbar lg:hidden">
+            {renderStateOptions("statesMob")}
+          </div>
+          <div className="lg:block hidden">
+            <Slider {...settings}>{renderStateOptions("states")}</Slider>
+          </div>
         </div>
         <div className="flex gap-gap lg:gap-0 overflow-x-scroll no-scrollbar lg:grid lg:grid-cols-4 items-center mt-gapMed lg:mt-gap">
           {DummyLocationsData.map((item, index) => (
             <LocationCard data={item} key={index} />
           ))}
         </div>
-        {isMob && (
-          <div className="flex items-center justify-center mt-gapLarge">
-            <Button redirect="#" />
-          </div>
-        )}
+
+        <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+          <Button redirect="#" />
+        </div>
       </Wrapper>
     </div>
   );
 };
 
 export default StateWisePackages;
+
+//---------------------EXTRA CODE-------------------------
+{
+  /* {isMob ? (
+            <div className="flex gap-gap overflow-x-scroll no-scrollbar">
+              {renderStateOptions()}
+            </div>
+          ) : (
+            <Slider {...settings}>{renderStateOptions()}</Slider>
+          )} */
+}

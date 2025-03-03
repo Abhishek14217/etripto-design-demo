@@ -20,12 +20,12 @@ import nyTripTwo from "@/images/ny-trip-two.png";
 
 type HomeMobIndexProps = {
   domPackagesData: GroupedPackagesData;
-  intlPackagesData: GroupedPackagesData;
+  // intlPackagesData: GroupedPackagesData;
 };
 
 const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
   domPackagesData,
-  intlPackagesData,
+  // intlPackagesData,
 }) => {
   return (
     <>
@@ -35,23 +35,22 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
         subtitle="Our most visited sights are here for you to explore!"
         redirectLink="#"
         data={domPackagesData}
-        isMob
       />
-      <TopDestination isMob />
-      <DestByTheme isMob />
-      <StateWisePackages isMob />
+      <TopDestination />
+      <DestByTheme />
+      <StateWisePackages/>
       <WhyChooseUs isMob />
       <NYTripBanner bg={nyTripOne} city="DALHOUSIE" redirect="#" isMob />
       <TopTours isMob />
       <SeasonWisePackagesMob />
       <GetawayLocations isMob />
-      <Packages
+      {/* <Packages
         title="Explore our Best International Packages"
         subtitle="Our most visited sights are here for you to explore!"
         redirectLink="#"
         data={intlPackagesData}
         isMob
-      />
+      /> */}
       <Achievements isMob />
       <Testimonials isMob />
       <NewBlog isMob />
@@ -63,3 +62,23 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
 };
 
 export default HomeMobIndex;
+
+//{CODE TO SETTLE SCREEN SIZE FOR TABLET LANDSCAPE VIEW. COMES AT A COST OF MAKING ALL THE COMPONENTS CLIENT COMPONENTS----------------
+
+// const [isMob, setIsMob] = useState(false);
+
+// useEffect(() => {
+//   // Function to check screen width
+//   const handleResize = () => {
+//     setIsMob(window.innerWidth < 1024);
+//   };
+
+//   // Check on mount
+//   handleResize();
+
+//   // Add event listener
+//   window.addEventListener("resize", handleResize);
+
+//   // Cleanup event listener
+//   return () => window.removeEventListener("resize", handleResize);
+// }, [])}

@@ -13,10 +13,6 @@ import solo from "@/images/solo.png";
 import adventure from "@/images/adventure.png";
 import nature from "@/images/nature.png";
 
-type DestByThemeProps = {
-  isMob?: boolean;
-};
-
 const DestByThemeData = [
   {
     image: honeymoon,
@@ -62,7 +58,7 @@ const DestByThemeData = [
   },
 ];
 
-const DestByTheme: React.FC<DestByThemeProps> = ({ isMob }) => {
+const DestByTheme = () => {
   var settings = {
     autoplay: true,
     arrows: true,
@@ -73,17 +69,54 @@ const DestByTheme: React.FC<DestByThemeProps> = ({ isMob }) => {
     autoplaySpeed: 3000,
   };
   return (
-    <div className="mt-[9rem] lg:mt-sectionGap">
+    <div className="mt-[9rem] sm:mt-[6rem] md:mt-[5rem] lg:mt-sectionGap">
       <Wrapper>
         <SectionHeaderCommon
           mainText="Explore destinations by theme"
           subText="Our most visited sights are here for you to explore!"
-          isMob={isMob}
           hasBtn
           redirectLink="#"
         />
-        <div className="mt-gapMed lg:mt-gap dest-by-theme-slider">
-          {isMob ? (
+        <div className="mt-gapMed lg:mt-gap dest-by-theme-slider w-full">
+          <div className="flex gap-gap overflow-x-scroll no-scrollbar lg:hidden">
+            {DestByThemeData.map((item, index) => (
+              <DestByThemeCard
+                key={index}
+                image={item.image}
+                theme={item.theme}
+                destCount={item.destCount}
+                redirect={item.redirect}
+              />
+            ))}
+          </div>
+          <div className="lg:block hidden">
+            <Slider {...settings}>
+              {DestByThemeData.map((item, index) => (
+                <DestByThemeCard
+                  key={index}
+                  image={item.image}
+                  theme={item.theme}
+                  destCount={item.destCount}
+                  redirect={item.redirect}
+                />
+              ))}
+            </Slider>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+          <Button redirect="#" />
+        </div>
+      </Wrapper>
+    </div>
+  );
+};
+
+export default DestByTheme;
+
+//----------------EXTRA CODE------------------------
+{
+  /* {isMob ? (
             <div className="flex gap-gap overflow-x-scroll no-scrollbar">
               {DestByThemeData.map((item, index) => (
                 <DestByThemeCard
@@ -107,16 +140,5 @@ const DestByTheme: React.FC<DestByThemeProps> = ({ isMob }) => {
                 />
               ))}
             </Slider>
-          )}
-        </div>
-        {isMob && (
-          <div className="flex items-center justify-center mt-gapLarge">
-            <Button redirect="#" />
-          </div>
-        )}
-      </Wrapper>
-    </div>
-  );
-};
-
-export default DestByTheme;
+          )} */
+}

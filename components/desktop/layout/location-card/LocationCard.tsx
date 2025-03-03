@@ -11,7 +11,7 @@ type LocationCardProps = {
 
 const LocaitonCard: React.FC<LocationCardProps> = ({ data }) => {
   return (
-    <div className="relative mr-0 min-w-[13.5rem] lg:mr-gap lg:min-w-[unset]">
+    <div className="relative mr-0 min-w-[13.5rem] md:min-w-[18rem] lg:min-w-[unset] lg:mr-gap ">
       <Image src={data.image} alt="destination" className="size-full" />
 
       <div className="p-gap absolute bottom-0 left-0 right-0">

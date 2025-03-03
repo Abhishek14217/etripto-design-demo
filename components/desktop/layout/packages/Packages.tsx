@@ -13,7 +13,6 @@ type PackagesProps = {
   subtitle: string;
   redirectLink: string;
   data: GroupedPackagesData;
-  isMob?: boolean;
   suppImg?: StaticImageData;
 };
 
@@ -22,7 +21,6 @@ const Packages: React.FC<PackagesProps> = ({
   subtitle,
   redirectLink,
   data,
-  isMob,
   suppImg,
 }) => {
   var settings = {
@@ -43,10 +41,43 @@ const Packages: React.FC<PackagesProps> = ({
           subText={subtitle}
           hasBtn
           redirectLink={redirectLink}
-          isMob={isMob}
         />
         <div className="mt-gapMed lg:mt-gap domestic-slider">
-          {isMob ? (
+          <div className="flex gap-gap overflow-x-scroll no-scrollbar lg:hidden">
+            {data.map((item, index) => (
+              <LocationCard data={item} key={index} />
+            ))}
+          </div>
+          <div className="lg:block hidden">
+            <Slider {...settings}>
+              {data.map((item, index) => (
+                <LocationCard data={item} key={index} />
+              ))}
+            </Slider>
+          </div>
+        </div>
+        <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+          <Button redirect={redirectLink} />
+        </div>
+      </Wrapper>
+      {suppImg && (
+        <Image
+          width={100}
+          src={suppImg}
+          alt="balloon"
+          className="absolute left-0 top-[8rem] hidden lg:block"
+        />
+      )}
+    </div>
+  );
+};
+
+export default Packages;
+
+//---------------------------------EXTRA CODE---------------------------
+
+{
+  /* {isMob ? (
             <div className="flex gap-gap overflow-x-scroll no-scrollbar">
               {data.map((item, index) => (
                 <LocationCard data={item} key={index} />
@@ -58,24 +89,13 @@ const Packages: React.FC<PackagesProps> = ({
                 <LocationCard data={item} key={index} />
               ))}
             </Slider>
-          )}
-        </div>
-        {isMob && (
+          )} */
+}
+
+{
+  /* {isMob && (
           <div className="flex items-center justify-center mt-gapLarge">
             <Button redirect={redirectLink} />
           </div>
-        )}
-      </Wrapper>
-      {!isMob && suppImg && (
-        <Image
-          width={100}
-          src={suppImg}
-          alt="balloon"
-          className="absolute left-0 top-[8rem]"
-        />
-      )}
-    </div>
-  );
-};
-
-export default Packages;
+        )} */
+}

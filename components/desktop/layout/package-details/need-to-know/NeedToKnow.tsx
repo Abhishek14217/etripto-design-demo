@@ -1,7 +1,4 @@
-import Image from "next/image";
-
-import doubleTick from "@/icons/double-tick.svg";
-import Link from "next/link";
+import DetailsList from "./DetailsList";
 
 const needToKnowData = [
   {
@@ -40,6 +37,25 @@ const cancellationData = [
   { days: "86-55", fee: "10%" },
 ];
 
+const paymentTermsData = [
+  {
+    title: "Payment Terms",
+    content: [
+      "Guest can pay by Cheque/ Demand Draft/ Debit card / Credit card/ NEFT/ RTGS/ IMPS. For Debit / Credit card payment additional 1.8 % convenience charge will be applicable Cheque / Demand draft should be in favour of 'Veena Patil Hospitality Pvt ltd'",
+    ],
+  },
+  {
+    title: "Remarks",
+    content: [
+      "All meals are provided by Etripto in case the flight reaches the stipulated destination early morning or leaves destination late in the evening.",
+      "The tour price mentioned for this tour is for Indian nationals only.",
+      "The tour price varies for NRI’s or foreign nationals, for more details kindly contact your travel advisor.",
+      "NRIs and Foreign nationals please ensure proper identity is conveyed to booking executive at the time of booking and all details along with passport copies are handed over to the booking executive.",
+      "Standard Check-in and check-out time of hotels in India is generally 1.30 PM and 10 AM respectively.",
+    ],
+  },
+];
+
 const NeedToKnow = () => {
   return (
     <>
@@ -51,40 +67,7 @@ const NeedToKnow = () => {
             Things to consider before the trip!
           </small>
         </h5>
-        <div className="mt-gap flex flex-col gap-gap">
-          {needToKnowData.map((item, index) => (
-            <div key={index}>
-              <span className="flex gap-gapSmall text-fontDeskSmall font-semibold">
-                <Image
-                  src={doubleTick}
-                  alt="double-tick"
-                  width={15}
-                  height={15}
-                  unoptimized
-                />
-                {item.title}
-              </span>
-              <ul className="list-disc ml-6 flex flex-col gap-gapSmallest marker:text-black">
-                {item.content.map((subitem, subindex) => (
-                  <li
-                    className="text-fontDeskSmall text-gray-400"
-                    key={subindex}
-                  >
-                    {subitem}{" "}
-                    {item.link && (
-                      <Link
-                        className="text-navyBlue text-fontDeskSmall"
-                        href="#"
-                      >
-                        {item.link}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <DetailsList data={needToKnowData} />
       </div>
 
       {/* ------------------------CANCELLATION POLICY AND PAYMENT TERMS----------------------------------- */}
@@ -121,6 +104,18 @@ const NeedToKnow = () => {
             ))}
           </div>
         </div>
+        <DetailsList data={paymentTermsData} />
+      </div>
+
+      {/* ------------------------UPGRADES----------------------------------- */}
+      <div className="mt-gap">
+        <h5 className="text-fontDesk font-semibold">Upgrades Available</h5>
+        <p className="text-fontDeskSmall text-gray-400 mt-gapSmallest">
+          Call us at{" "}
+          <span className="text-navyBlue font-semibold">1800 22 7009</span> for
+          Coach Prime seats or Business Class upgrades for a premium travel
+          experience.
+        </p>
       </div>
     </>
   );

@@ -25,12 +25,12 @@ import balloon from "@/images/balloon.svg";
 
 type HomeIndexProps = {
   domPackagesData: GroupedPackagesData;
-  intlPackagesData: GroupedPackagesData;
+  // intlPackagesData: GroupedPackagesData;
 };
 
 const HomeIndex: React.FC<HomeIndexProps> = ({
   domPackagesData,
-  intlPackagesData,
+  // intlPackagesData,
 }) => {
   return (
     <>
@@ -57,13 +57,13 @@ const HomeIndex: React.FC<HomeIndexProps> = ({
       <TopTours />
       <SeasonWisePackages />
       <GetawayLocations />
-      <Packages
+      {/* <Packages
         title="Explore our Best International Packages"
         subtitle="Our most visited sights are here for you to explore!"
         redirectLink="#"
         data={intlPackagesData}
         suppImg={balloon}
-      />
+      /> */}
       <Achievements />
       <Testimonials />
       <NewBlog />

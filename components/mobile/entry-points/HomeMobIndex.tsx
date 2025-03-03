@@ -39,11 +39,11 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
       <TopDestination />
       <DestByTheme />
       <StateWisePackages/>
-      <WhyChooseUs isMob />
+      {/* <WhyChooseUs isMob />
       <NYTripBanner bg={nyTripOne} city="DALHOUSIE" redirect="#" isMob />
       <TopTours isMob />
       <SeasonWisePackagesMob />
-      <GetawayLocations isMob />
+      <GetawayLocations isMob /> */}
       {/* <Packages
         title="Explore our Best International Packages"
         subtitle="Our most visited sights are here for you to explore!"
@@ -51,12 +51,12 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
         data={intlPackagesData}
         isMob
       /> */}
-      <Achievements isMob />
+      {/* <Achievements isMob />
       <Testimonials isMob />
       <NewBlog isMob />
       <NYTripBanner bg={nyTripTwo} city="MUSSORIE" redirect="#" isMob />
       <SafeHolidays isMob />
-      <BestTravelPackages />
+      <BestTravelPackages /> */}
     </>
   );
 };

@@ -34,7 +34,7 @@ const MainSlider: React.FC<MainSliderProps> = ({ isMob }) => {
       <Slider {...settings}>
         {sliderImages.map((item, index) => (
           <Link href={item.url} key={index}>
-            <div className="h-[10rem] lg:h-[33.875rem] relative">
+            <div className="h-[10rem] sm:h-[14rem] md:h-[20rem] lg:h-[33.875rem] relative">
               <Image
                 src={item.image}
                 alt="main-slider-img"
@@ -45,7 +45,7 @@ const MainSlider: React.FC<MainSliderProps> = ({ isMob }) => {
           </Link>
         ))}
       </Slider>
-      <div className="absolute bottom-[3rem] left-[10%] lg:bottom-[8rem] lg:left-1/2 lg:transform lg:-translate-x-1/2">
+      <div className="absolute bottom-[3rem] left-[10%] lg:bottom-[8rem] sm:left-1/2 sm:transform sm:-translate-x-1/2">
         <h1 className="text-white text-fontDeskSmall  lg:text-[1.5rem] font-extrabold text-center">
           Tailored and Book Your Dream Vacation Packages
         </h1>

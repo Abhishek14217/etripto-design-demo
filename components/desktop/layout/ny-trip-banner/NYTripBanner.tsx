@@ -9,7 +9,6 @@ type NYTripBannerProps = {
   redirect: string;
   suppImg?: StaticImageData;
   right?: boolean;
-  isMob?: boolean;
 };
 
 const NYTripBanner: React.FC<NYTripBannerProps> = ({
@@ -18,13 +17,13 @@ const NYTripBanner: React.FC<NYTripBannerProps> = ({
   redirect,
   suppImg,
   right,
-  isMob,
 }) => {
   return (
     <div className="mt-gapLargest lg:mt-sectionGap">
-      {isMob ? (
+      <div className="lg:hidden md:hidden">
         <NYTripBannerContent bg={bg} city={city} redirect={redirect} />
-      ) : (
+      </div>
+      <div className="lg:block md:block hidden">
         <Wrapper>
           <NYTripBannerContent
             bg={bg}
@@ -34,9 +33,24 @@ const NYTripBanner: React.FC<NYTripBannerProps> = ({
             right={right}
           />
         </Wrapper>
-      )}
+      </div>
     </div>
   );
 };
 
 export default NYTripBanner;
+
+//-----------------------EXTRA CODE-------------------
+// {isMob ? (
+//   <NYTripBannerContent bg={bg} city={city} redirect={redirect} />
+// ) : (
+//   <Wrapper>
+//     <NYTripBannerContent
+//       bg={bg}
+//       city={city}
+//       redirect={redirect}
+//       suppImg={suppImg}
+//       right={right}
+//     />
+//   </Wrapper>
+// )}

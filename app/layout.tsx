@@ -43,7 +43,7 @@ export default async function RootLayout({
         )}
 
         {children}
-        {isMobileView ? <Footer isMob /> : <Footer />}
+        <Footer />
       </body>
     </html>
   );

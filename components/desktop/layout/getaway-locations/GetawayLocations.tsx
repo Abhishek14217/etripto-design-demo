@@ -49,11 +49,7 @@ const getAwayLocationsData = [
   },
 ];
 
-type GetawayLocationsProps = {
-  isMob?: boolean;
-};
-
-const GetawayLocations: React.FC<GetawayLocationsProps> = ({ isMob }) => {
+const GetawayLocations = () => {
   const firstPart = getAwayLocationsData.slice(0, 2); // First 2 elements(DESKTOP)
   const secondPart = getAwayLocationsData.slice(2); // Remaining 3 elements(DESKTOP)
 
@@ -62,51 +58,79 @@ const GetawayLocations: React.FC<GetawayLocationsProps> = ({ isMob }) => {
 
   return (
     <div className="bg-lightGray mt-gapLargest lg:mt-sectionGap relative py-gap px-0 lg:p-gap">
-      {!isMob && (
-        <Image
-          src={cloud}
-          alt="cloud"
-          className="absolute top-[1.5rem] w-[13rem]"
-        />
-      )}
+      <Image
+        src={cloud}
+        alt="cloud"
+        className="absolute top-[1.5rem] w-[13rem] hidden lg:block"
+      />
+
       <Wrapper>
         <SectionHeaderCommon
           mainText="Places we can take you to"
           subText="Our most visited sights are here for you to explore!"
         />
 
-        {isMob ? (
-          <>
-            {/* Mobile Layout */}
-            <div className="block mt-gap">
-              {firstPartMob.map((item, index) => (
-                <GetawayLocationCard key={index} data={item} />
-              ))}
-            </div>
-            <div className="grid grid-cols-2 gap-gap mt-gap">
-              {secondPartMob.map((item, index) => (
-                <GetawayLocationCard key={index} data={item} />
-              ))}
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Desktop Layout */}
-            <div className="grid grid-cols-[2fr_1fr] gap-gapMed mt-gap">
-              {firstPart.map((item, index) => (
-                <GetawayLocationCard key={index} data={item} />
-              ))}
-            </div>
-            <div className="grid grid-cols-3 gap-gapMed mt-gap">
-              {secondPart.map((item, index) => (
-                <GetawayLocationCard key={index} data={item} />
-              ))}
-            </div>
-          </>
-        )}
+        {/* Mobile Layout */}
+        <div className="lg:hidden md:hidden">
+          <div className="block mt-gap">
+            {firstPartMob.map((item, index) => (
+              <GetawayLocationCard key={index} data={item} />
+            ))}
+          </div>
+          <div className="grid grid-cols-2 gap-gap mt-gap">
+            {secondPartMob.map((item, index) => (
+              <GetawayLocationCard key={index} data={item} />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="lg:block md:block hidden">
+          <div className="grid grid-cols-[2fr_1fr] gap-gapMed mt-gap">
+            {firstPart.map((item, index) => (
+              <GetawayLocationCard key={index} data={item} />
+            ))}
+          </div>
+          <div className="grid grid-cols-3 gap-gapMed mt-gap">
+            {secondPart.map((item, index) => (
+              <GetawayLocationCard key={index} data={item} />
+            ))}
+          </div>
+        </div>
       </Wrapper>
     </div>
   );
 };
 
 export default GetawayLocations;
+
+//---------------------EXTRA CODE-----------------------
+// {isMob ? (
+//   <>
+//     {/* Mobile Layout */}
+//     <div className="block mt-gap">
+//       {firstPartMob.map((item, index) => (
+//         <GetawayLocationCard key={index} data={item} />
+//       ))}
+//     </div>
+//     <div className="grid grid-cols-2 gap-gap mt-gap">
+//       {secondPartMob.map((item, index) => (
+//         <GetawayLocationCard key={index} data={item} />
+//       ))}
+//     </div>
+//   </>
+// ) : (
+//   <>
+//     {/* Desktop Layout */}
+//     <div className="grid grid-cols-[2fr_1fr] gap-gapMed mt-gap">
+//       {firstPart.map((item, index) => (
+//         <GetawayLocationCard key={index} data={item} />
+//       ))}
+//     </div>
+//     <div className="grid grid-cols-3 gap-gapMed mt-gap">
+//       {secondPart.map((item, index) => (
+//         <GetawayLocationCard key={index} data={item} />
+//       ))}
+//     </div>
+//   </>
+// )}

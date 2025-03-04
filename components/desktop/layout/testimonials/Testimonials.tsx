@@ -40,11 +40,7 @@ const TestimonialItem = ({ image, videoId, onClick }: any) => (
   </div>
 );
 
-type TestimonialsProps = {
-  isMob?: boolean;
-};
-
-const Testimonials: React.FC<TestimonialsProps> = ({ isMob }) => {
+const Testimonials = () => {
   const [showModal, setShowModal] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState(null);
 
@@ -68,34 +64,27 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isMob }) => {
     <>
       {/*--------------------------------------- TESTIMONIALS--------------------------------------------------- */}
       <div className="mt-gapLargest lg:mt-sectionGap relative">
-        {!isMob && (
-          <Image
-            src={cloud}
-            alt="cloud"
-            className="absolute top-[1.5rem] w-[13rem]"
-          />
-        )}
+        <Image
+          src={cloud}
+          alt="cloud"
+          className="absolute top-[1.5rem] w-[13rem] hidden lg:block"
+        />
+
         <Wrapper>
           <SectionHeaderCommon
             mainText="Our Happy Travellers"
             subText="Real Traveler, Real Story and Real Experience"
             hasBtn
             redirectLink="#"
-            isMob={isMob}
           />
 
           <div className="mt-gapMed lg:mt-gap domestic-slider">
-            {isMob ? (
-              <div className="flex gap-gap overflow-x-scroll no-scrollbar">
-                {testimonialData.map((item, index) => (
-                  <TestimonialItem
-                    key={index}
-                    {...item}
-                    onClick={toggleModal}
-                  />
-                ))}
-              </div>
-            ) : (
+            <div className="flex gap-gap overflow-x-scroll no-scrollbar lg:hidden">
+              {testimonialData.map((item, index) => (
+                <TestimonialItem key={index} {...item} onClick={toggleModal} />
+              ))}
+            </div>
+            <div className="lg:block hidden">
               <Slider {...settings}>
                 {testimonialData.map((item, index) => (
                   <TestimonialItem
@@ -105,16 +94,13 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isMob }) => {
                   />
                 ))}
               </Slider>
-            )}
+            </div>
           </div>
 
           {showModal && (
             <Modal
               close={() => toggleModal(null)}
-              width={isMob ? "85%" : "50%"}
-              height={isMob ? "45%" : "70%"}
-              left={isMob ? "6%" : "25%"}
-              top={"20vh"}
+              className="w-[85%] lg:w-[50%] h-[45%] md:h-[65%] lg:h-[70%] left-[6%] lg:left-[25%] top-[20vh]"
             >
               <div className="flex justify-end border-b border-gray-200">
                 <button
@@ -135,25 +121,23 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isMob }) => {
               </div>
             </Modal>
           )}
-          {isMob && (
-            <div className="flex items-center justify-center mt-gapLarge">
-              <Button redirect="#" />
-            </div>
-          )}
+
+          <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+            <Button redirect="#" />
+          </div>
         </Wrapper>
-        {!isMob && (
-          <Image
-            src={cloudTwo}
-            alt="cloud-two"
-            className="absolute right-[2rem] top-[2rem] w-[13rem] -z-10"
-          />
-        )}
+
+        <Image
+          src={cloudTwo}
+          alt="cloud-two"
+          className="absolute right-[2rem] top-[2rem] w-[13rem] -z-10 hidden xl:block"
+        />
       </div>
 
       {/*---------------------------------------LOGOS--------------------------------------------------- */}
       <div className="mt-gapLargest lg:mt-sectionGap">
         <Wrapper>
-          <div className="lg:grid lg:grid-cols-5 flex gap-gap overflow-x-scroll no-scrollbar">
+          <div className="lg:grid lg:grid-cols-5 md:grid md:grid-cols-5 flex gap-gap overflow-x-scroll no-scrollbar">
             {logosData.map((item, index) => (
               <div
                 className="group  min-w-[4.9rem] lg:min-w-[unset] transition-all duration-300"
@@ -177,3 +161,28 @@ const Testimonials: React.FC<TestimonialsProps> = ({ isMob }) => {
 };
 
 export default Testimonials;
+
+//-----------------------EXTRA CODE------------------------
+{
+  /* {isMob ? (
+              <div className="flex gap-gap overflow-x-scroll no-scrollbar">
+                {testimonialData.map((item, index) => (
+                  <TestimonialItem
+                    key={index}
+                    {...item}
+                    onClick={toggleModal}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Slider {...settings}>
+                {testimonialData.map((item, index) => (
+                  <TestimonialItem
+                    key={index}
+                    {...item}
+                    onClick={toggleModal}
+                  />
+                ))}
+              </Slider>
+            )} */
+}

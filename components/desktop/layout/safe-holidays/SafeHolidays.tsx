@@ -34,11 +34,7 @@ const safeHolidaysData = [
   },
 ];
 
-type SafeHolidaysProps = {
-  isMob?: boolean;
-};
-
-const SafeHolidays: React.FC<SafeHolidaysProps> = ({ isMob }) => {
+const SafeHolidays = () => {
   return (
     <div className="bg-softGray mt-gapLargest lg:mt-sectionGap p-gap relative">
       <Wrapper>
@@ -47,7 +43,7 @@ const SafeHolidays: React.FC<SafeHolidaysProps> = ({ isMob }) => {
           subText="We are actively working with our holiday partners to maintain the safety measures for providing you a risk free vacation"
         />
 
-        <div className="mt-gap flex flex-col lg:grid grid-cols-4 gap-gap">
+        <div className="mt-gap flex flex-col lg:grid lg:grid-cols-4 md:grid md:grid-cols-2 sm:grid sm:grid-cols-2 gap-gap">
           {safeHolidaysData.map((item, index) => (
             <div key={index} className="flex flex-col gap-gapSmall">
               <Image
@@ -65,15 +61,14 @@ const SafeHolidays: React.FC<SafeHolidaysProps> = ({ isMob }) => {
           ))}
         </div>
       </Wrapper>
-      {!isMob && (
-        <Image
-          src={coconutReverse}
-          alt="coconut-rev"
-          width={113}
-          className="absolute right-[1rem] bottom-0"
-          unoptimized
-        />
-      )}
+
+      <Image
+        src={coconutReverse}
+        alt="coconut-rev"
+        width={113}
+        className="absolute right-[1rem] bottom-0 hidden xl:block"
+        unoptimized
+      />
     </div>
   );
 };

@@ -6,7 +6,7 @@ import TopDestination from "@/components/desktop/layout/top-destination/TopDesti
 import WhyChooseUs from "@/components/desktop/layout/why-choose-us/WhyChooseUs";
 import NYTripBanner from "@/components/desktop/layout/ny-trip-banner/NYTripBanner";
 import TopTours from "@/components/desktop/layout/top-tours/TopTours";
-import SeasonWisePackagesMob from "../layout/season-wise-packages-mob/SeasonWisePackagesMob";
+import SeasonWisePackages from "@/components/desktop/layout/season-wise-packages/SeasonWisePackages";
 import GetawayLocations from "@/components/desktop/layout/getaway-locations/GetawayLocations";
 import Achievements from "@/components/desktop/layout/achievements/Achievements";
 import Testimonials from "@/components/desktop/layout/testimonials/Testimonials";
@@ -38,12 +38,12 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
       />
       <TopDestination />
       <DestByTheme />
-      <StateWisePackages/>
-      <WhyChooseUs isMob />
-      <NYTripBanner bg={nyTripOne} city="DALHOUSIE" redirect="#" isMob />
-      <TopTours isMob />
-      <SeasonWisePackagesMob />
-      <GetawayLocations isMob />
+      <StateWisePackages />
+      <WhyChooseUs />
+      <NYTripBanner bg={nyTripOne} city="DALHOUSIE" redirect="#" />
+      <TopTours />
+      <SeasonWisePackages />
+      <GetawayLocations />
       {/* <Packages
         title="Explore our Best International Packages"
         subtitle="Our most visited sights are here for you to explore!"
@@ -51,11 +51,11 @@ const HomeMobIndex: React.FC<HomeMobIndexProps> = ({
         data={intlPackagesData}
         isMob
       /> */}
-      <Achievements isMob />
-      <Testimonials isMob />
-      <NewBlog isMob />
-      <NYTripBanner bg={nyTripTwo} city="MUSSORIE" redirect="#" isMob />
-      <SafeHolidays isMob />
+      <Achievements />
+      <Testimonials />
+      <NewBlog />
+      <NYTripBanner bg={nyTripTwo} city="MUSSORIE" redirect="#" />
+      <SafeHolidays />
       <BestTravelPackages />
     </>
   );

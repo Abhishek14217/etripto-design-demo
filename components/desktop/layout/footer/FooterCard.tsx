@@ -47,8 +47,8 @@ const footerLinksData = [
 const FooterCard = () => {
   return (
     <div className="lg:border-t lg:border-b border-dustyGray lg:py-gap">
-      <div className="flex lg:justify-between flex-col lg:flex-row">
-        <div className="flex flex-col gap-gapSmall lg:w-[25%]">
+      <div className="flex flex-col flex-wrap sm:flex-row sm:justify-between">
+        <div className="flex flex-col gap-gapSmall sm:w-[40%] md:w-[31%] lg:w-[25%]">
           <Link href="/">
             <Image src={logo} alt="logo" height={83} width={83} unoptimized />
           </Link>
@@ -76,7 +76,7 @@ const FooterCard = () => {
           </div>
         </div>
         {footerLinksData.map((item, index) => (
-          <div key={index} className="mt-gap lg:mt-0">
+          <div key={index} className="mt-gap sm:mt-0">
             <h5 className="text-fontDesk text-white lg:text-black mb-gapSmall">
               {item.title}
             </h5>
@@ -99,7 +99,7 @@ const FooterCard = () => {
             </ul>
           </div>
         ))}
-        <div className="flex flex-col gap-gapSmall mt-gap lg:mt-0">
+        <div className="flex flex-col gap-gapSmall mt-gap md:mt-0">
           <h5 className="text-fontDesk text-white lg:text-black">
             Keep travelling all year round!
           </h5>

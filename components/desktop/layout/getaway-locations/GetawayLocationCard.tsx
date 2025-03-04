@@ -14,7 +14,7 @@ type GetawayLocationCardProps = {
 
 const GetawayLocationCard: React.FC<GetawayLocationCardProps> = ({ data }) => {
   return (
-    <div className="relative h-[10rem] lg:h-full">
+    <div className="relative h-[10rem] md:h-full lg:h-full">
       <Image
         src={data.image}
         alt={`${data.locationName}-image`}

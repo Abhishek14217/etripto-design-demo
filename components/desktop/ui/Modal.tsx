@@ -4,24 +4,14 @@ import { useEffect } from "react";
 type ModalProps = {
   close?: () => void;
   children?: React.ReactNode;
-  width?: string;
-  height?: string;
-  left?: string;
-  top?: string;
+  className?: string;
 };
 
 export const Backdrop: React.FC<ModalProps> = ({ close }) => {
   return <div className="backdrop" onClick={close}></div>;
 };
 
-const Modal: React.FC<ModalProps> = ({
-  close,
-  children,
-  width,
-  height,
-  left,
-  top,
-}) => {
+const Modal: React.FC<ModalProps> = ({ close, children, className }) => {
   useEffect(() => {
     // Apply the 'stop-scroll' class to the body when the modal is open
     document.body.classList.add("stop-scroll");
@@ -39,17 +29,7 @@ const Modal: React.FC<ModalProps> = ({
       )}
 
       {ReactDOM.createPortal(
-        <div
-          className="modal"
-          style={{
-            width,
-            height,
-            left,
-            top,
-          }}
-        >
-          {children}
-        </div>,
+        <div className={`modal ${className && className}`}>{children}</div>,
         document.getElementById("overlay-root") as HTMLElement
       )}
     </>

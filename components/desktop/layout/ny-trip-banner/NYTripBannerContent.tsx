@@ -30,7 +30,7 @@ const NYTripBannerContent: React.FC<NYTripBannerContentProps> = ({
       )}
 
       <Image src={bg} alt="ny-banner-one" className="size-full" />
-      <div className="absolute top-2 lg:top-12 left-[35%] flex flex-col lg:flex-row text-center lg:text-start items-center gap-1 lg:gap-[6rem]">
+      <div className="absolute top-2 md:top-7 lg:top-12 left-[35%] flex flex-col lg:flex-row text-center lg:text-start items-center gap-1 lg:gap-[6rem] md:flex-row md:gap-[3rem]">
         <h4
           style={{ fontFamily: "Bebas Neue, serif" }}
           className=" text-2xl lg:text-5xl text-navyBlue capitalize"

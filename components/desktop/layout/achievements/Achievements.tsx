@@ -23,16 +23,16 @@ const achievementsData = [
   },
 ];
 
-type AchievementsProps = {
-  isMob?: boolean;
-};
-
-const Achievements: React.FC<AchievementsProps> = ({ isMob }) => {
+const Achievements = () => {
   return (
     <div className="mt-gapLargest lg:mt-sectionGap relative h-full lg:h-[15.75rem] bg-navyBlue bg-[url('/world-map-achieve.png')] bg-no-repeat bg-center lg:bg-none">
-      {!isMob && (
-        <Image src={achievementBanner} alt="achievements-banner" fill />
-      )}
+      <Image
+        src={achievementBanner}
+        alt="achievements-banner"
+        fill
+        className="lg:block hidden"
+      />
+
       <Wrapper>
         <div className="relative z-10 py-gap flex flex-col justify-between h-full lg:h-[15.75rem]">
           <div className="border-l-4 border-primaryCyan pl-3">
@@ -50,7 +50,7 @@ const Achievements: React.FC<AchievementsProps> = ({ isMob }) => {
               We're curating experiences that
             </h6>
           </div>
-          <div className="mt-gap lg:mt-0 grid grid-cols-2 lg:grid-cols-5 gap-[2rem] lg:gap-0">
+          <div className="mt-gap lg:mt-0 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-[2rem] md:gap-gap lg:gap-0">
             {achievementsData.map((item, index) => (
               <div key={index} className="flex flex-col gap-gapSmall">
                 <Image
@@ -71,16 +71,15 @@ const Achievements: React.FC<AchievementsProps> = ({ isMob }) => {
           </div>
         </div>
       </Wrapper>
-      {!isMob && (
-        <Image
-          src={parachute}
-          alt="parachute"
-          width={140}
-          height={150}
-          unoptimized
-          className="absolute right-0 top-[-4rem] -z-10"
-        />
-      )}
+
+      <Image
+        src={parachute}
+        alt="parachute"
+        width={140}
+        height={150}
+        unoptimized
+        className="absolute right-0 top-[-3rem] -z-10 hidden lg:block"
+      />
     </div>
   );
 };

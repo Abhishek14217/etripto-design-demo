@@ -36,22 +36,19 @@ const chooseUsData = [
   },
 ];
 
-type WhyChooseUsProps = {
-  isMob?: boolean;
-};
-
-const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ isMob }) => {
+const WhyChooseUs = () => {
   return (
     <>
       {/*--------------------------------------- BANNER--------------------------------------------------- */}
       <div className="mt-gapLargest lg:mt-sectionGap">
-        {isMob ? (
+        <div className="lg:hidden md:hidden">
           <BannerContent />
-        ) : (
+        </div>
+        <div className="lg:block md:block hidden">
           <Wrapper>
             <BannerContent />
           </Wrapper>
-        )}
+        </div>
       </div>
 
       {/* --------------------------------WHY CHOOSE US SECTION------------------------------------- */}
@@ -62,11 +59,11 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ isMob }) => {
             subText="All Inclusive Trip Features"
           />
 
-          <div className="lg:grid lg:grid-cols-4 lg:gap-sectionGap mt-gap lg:mt-gapLargest ">
+          <div className="lg:grid lg:grid-cols-4 lg:gap-sectionGap lg:mt-gapLargest md:grid md:grid-cols-2 md:gap-6 mt-gap ">
             {chooseUsData.map((item, index) => (
               <div
                 key={index}
-                className="mb-gap lg:mb-0 last:mb-0 flex gap-gap lg:block"
+                className="mb-gap lg:mb-0 md:mb-0 last:mb-0 flex gap-gap lg:block"
               >
                 <Image
                   src={item.image}
@@ -93,3 +90,14 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ isMob }) => {
 };
 
 export default WhyChooseUs;
+
+//-----------------------EXTRA CODE-------------------
+{
+  /* {isMob ? (
+          <BannerContent />
+        ) : (
+          <Wrapper>
+            <BannerContent />
+          </Wrapper>
+        )} */
+}

@@ -74,11 +74,7 @@ const howItWorksData = [
   },
 ];
 
-type TopToursProps = {
-  isMob?: boolean;
-};
-
-const TopTours: React.FC<TopToursProps> = ({ isMob }) => {
+const TopTours = () => {
   var settings = {
     arrows: true,
     infinite: true,
@@ -99,28 +95,25 @@ const TopTours: React.FC<TopToursProps> = ({ isMob }) => {
             subText="Our most visited sights are here for you to explore!"
             hasBtn
             redirectLink="#"
-            isMob={isMob}
           />
           <div className="mt-gapMed lg:mt-gap domestic-slider">
-            {isMob ? (
-              <div className="flex gap-gap overflow-x-scroll no-scrollbar">
-                {TopToursData.map((item, index) => (
-                  <TopToursCard data={item} key={index} />
-                ))}
-              </div>
-            ) : (
+            <div className="flex gap-gap overflow-x-scroll no-scrollbar lg:hidden">
+              {TopToursData.map((item, index) => (
+                <TopToursCard data={item} key={index} />
+              ))}
+            </div>
+            <div className="lg:block hidden">
               <Slider {...settings}>
                 {TopToursData.map((item, index) => (
                   <TopToursCard data={item} key={index} />
                 ))}
               </Slider>
-            )}
-          </div>
-          {isMob && (
-            <div className="flex items-center justify-center mt-gapLarge">
-              <Button redirect="#" />
             </div>
-          )}
+          </div>
+
+          <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+            <Button redirect="#" />
+          </div>
         </Wrapper>
         <Image
           style={{ zIndex: "-1" }}
@@ -142,7 +135,7 @@ const TopTours: React.FC<TopToursProps> = ({ isMob }) => {
             middleTextFontSizeClass="text-fontDeskLargest"
           />
 
-          <div className="mt-gapMed lg:mt-gap flex flex-col lg:flex-row gap-gap lg:gap-0 justify-center items-center lg:items-start">
+          <div className="mt-gapMed lg:mt-gap flex flex-col lg:flex-row md:flex-row gap-gap lg:gap-0 justify-center items-center lg:items-start">
             {howItWorksData.map((item, index) => (
               <div key={index} className="flex items-start">
                 <span className="flex items-center flex-col">
@@ -154,30 +147,46 @@ const TopTours: React.FC<TopToursProps> = ({ isMob }) => {
                     {item.content}
                   </h6>
                 </span>
-                {!isMob && index !== howItWorksData.length - 1 && (
+                {index !== howItWorksData.length - 1 && (
                   <Image
                     src={howItWorksArrow}
                     alt="image"
                     unoptimized
-                    className="pt-11 -mx-4"
+                    className="pt-11 -mx-4 hidden lg:block lg:w-[unset] md:block md:w-[130px] "
                   />
                 )}
               </div>
             ))}
           </div>
         </Wrapper>
-        {!isMob && (
-          <Image
-            src={coconut}
-            alt="coconut"
-            width={113}
-            className="absolute right-6 bottom-[-2rem]"
-            unoptimized
-          />
-        )}
+
+        <Image
+          src={coconut}
+          alt="coconut"
+          width={113}
+          className="absolute right-6 bottom-[-2rem] hidden xl:block"
+          unoptimized
+        />
       </div>
     </>
   );
 };
 
 export default TopTours;
+
+//------------------------------EXTRA CODE---------------------------
+{
+  /* {isMob ? (
+              <div className="flex gap-gap overflow-x-scroll no-scrollbar">
+                {TopToursData.map((item, index) => (
+                  <TopToursCard data={item} key={index} />
+                ))}
+              </div>
+            ) : (
+              <Slider {...settings}>
+                {TopToursData.map((item, index) => (
+                  <TopToursCard data={item} key={index} />
+                ))}
+              </Slider>
+            )} */
+}

@@ -48,18 +48,13 @@ const newBlogData = [
   },
 ];
 
-type NewBlogProps = {
-  isMob?: boolean;
-};
-
-const NewBlog: React.FC<NewBlogProps> = ({ isMob }) => {
+const NewBlog = () => {
   return (
     <div className="mt-gapLargest lg:mt-sectionGap relative">
       <Wrapper>
         <SectionHeaderCommon
           mainText="Our New Blog"
           subText="What clients say about us"
-          isMob={isMob}
           hasBtn
           redirectLink="#"
         />
@@ -108,20 +103,18 @@ const NewBlog: React.FC<NewBlogProps> = ({ isMob }) => {
             </div>
           ))}
         </div>
-        {isMob && (
-          <div className="flex items-center justify-center mt-gapLarge">
-            <Button redirect="#" />
-          </div>
-        )}
+
+        <div className="flex items-center justify-center mt-gapLarge lg:hidden">
+          <Button redirect="#" />
+        </div>
       </Wrapper>
-      {!isMob && (
-        <Image
-          width={100}
-          src={balloon}
-          alt="balloon"
-          className="absolute left-0 top-[8rem]"
-        />
-      )}
+
+      <Image
+        width={100}
+        src={balloon}
+        alt="balloon"
+        className="absolute left-0 top-[8rem] hidden xl:block"
+      />
     </div>
   );
 };
